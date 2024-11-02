@@ -3,7 +3,7 @@ services:
   grpc_server:
     build:
       context: ..
-      dockerfile: container/Dockerfile
+      dockerfile: container/grpcserver/Dockerfile
     ports:
       - "50051:50051"
     depends_on:
@@ -13,3 +13,9 @@ services:
     ports:
       - "6379:6379"
     command: redis-server
+  grpc_client:
+    build:
+      context: ..
+      dockerfile: container/grpcclient/Dockerfile
+    depends_on:
+      - grpc_server

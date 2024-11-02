@@ -6,6 +6,9 @@ option go_package = "github.com/Haule9-2/microservice/adapter/userclient/generat
 
 service UserService {
   rpc GetUser (UserRequest) returns (UserResponse) {}
+  rpc AddUser (AddUserRequest) returns (UserResponse) {}
+  rpc UpdateUser (UpdateUserRequest) returns (UserResponse) {}
+  rpc RemoveUser (RemoveUserRequest) returns (UserResponse) {}
 }
 
 message UserRequest {
@@ -14,5 +17,20 @@ message UserRequest {
 
 message UserResponse {
   string name = 1;
+  int32 age = 2;  
+}
+
+message AddUserRequest {
+  string name = 1;
   int32 age = 2;
+}
+
+message UpdateUserRequest {
+  string user_id = 1;
+  string name = 2;
+  int32 age = 3;
+}
+
+message RemoveUserRequest {
+  string user_id = 1;
 }
